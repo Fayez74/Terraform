@@ -73,7 +73,7 @@ module "ec2_db" {
   }
 }
 
-module "ec2" {
+module "ec2_back" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
   name           = "BackSide"
