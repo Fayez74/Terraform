@@ -73,25 +73,6 @@ module "ec2_db" {
   }
 }
 
-module "ec2_back" {
-  source = "terraform-aws-modules/ec2-instance/aws"
-
-  name           = "BackSide"
-  instance_count = 1
-
-  ami                         = "ami-5055cd3f"
-  instance_type               = "t2.micro"
-  key_name                    = "newKey"
-  vpc_security_group_ids      = ["${module.aws_db_security_group.this_security_group_id}"]
-  subnet_id                   = "${module.vpc.private_subnets[0]}"
-  associate_public_ip_address = false
-
-  tags = {
-    Terraform   = "true"
-    Environment = "Backside"
-  }
-}
-
 #SG
 module "aws_security_group" {
   source = "terraform-aws-modules/security-group/aws//modules/ssh"
