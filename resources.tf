@@ -96,7 +96,7 @@ module "aws_db_security_group" {
 
 module "s3-buckets" {
   source      = "devops-workflow/s3-buckets/aws"
-  names       = ["s3TestBucket"]
+  names       = ["s3_test_bucket"]
   environment = "dev"
   org         = "corp"
   public      = true
