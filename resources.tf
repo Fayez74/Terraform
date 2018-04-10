@@ -81,7 +81,7 @@ module "aws_security_group" {
   description = "Security group with port 22 open to the world"
   vpc_id      = "${module.vpc.vpc_id}"
 
-  ingress_cidr_blocks = ["0.0.0.0/0"]
+  ingress_cidr_blocks = ["195.212.29.82/32"]
 }
 
 module "aws_db_security_group" {
@@ -92,4 +92,12 @@ module "aws_db_security_group" {
   vpc_id      = "${module.vpc.vpc_id}"
 
   ingress_cidr_blocks = ["195.212.29.82/32"]
+}
+
+module "s3-buckets" {
+  source      = "devops-workflow/s3-buckets/aws"
+  names       = ["s3TestBucket"]
+  environment = "dev"
+  org         = "corp"
+  public      = true
 }
